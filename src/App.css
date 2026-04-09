@@ -1,0 +1,209 @@
+/* ===== Layout ===== */
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #FFD700;
+  font-weight: 900;
+  letter-spacing: 2px;
+  animation: title-glow 2s ease-in-out infinite;
+}
+
+.subtitle {
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #FFA07A;
+  margin-top: 0.3rem;
+  opacity: 0.9;
+}
+
+/* ===== Stage / Cat Wrapper ===== */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.dancing-cat-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dancing-cat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center bottom;
+}
+
+.cat-image {
+  width: clamp(140px, 30vw, 220px);
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(255, 159, 67, 0.4));
+}
+
+/* ===== Stage Shadow ===== */
+.stage-shadow {
+  width: clamp(80px, 18vw, 130px);
+  height: 16px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, transparent 70%);
+  border-radius: 50%;
+  margin-top: -8px;
+  animation: shadow-pulse 0.8s ease-in-out infinite;
+}
+
+/* ===== Sparkles ===== */
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: sparkle-float 1.5s ease-out infinite;
+}
+
+.s1 { left: 5%;  top: 40%; animation-delay: 0s;    animation-duration: 1.4s; }
+.s2 { left: 20%; top: 10%; animation-delay: 0.3s;  animation-duration: 1.7s; }
+.s3 { right: 5%; top: 40%; animation-delay: 0.6s;  animation-duration: 1.3s; }
+.s4 { right: 20%;top: 15%; animation-delay: 0.9s;  animation-duration: 1.6s; }
+.s5 { left: 48%; top: 0%;  animation-delay: 0.15s; animation-duration: 1.5s; }
+
+/* ===== Controls ===== */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle-btn {
+  padding: 0.75rem 2.5rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+}
+
+.toggle-btn.playing {
+  background: linear-gradient(135deg, #FF6B6B, #FF4757);
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 71, 87, 0.5);
+}
+
+.toggle-btn.paused {
+  background: linear-gradient(135deg, #2ED573, #1E90FF);
+  color: white;
+  box-shadow: 0 4px 20px rgba(46, 213, 115, 0.5);
+}
+
+.toggle-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.toggle-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ===== Dance Style Buttons ===== */
+.dance-styles {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.style-btn {
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.style-btn:hover {
+  border-color: #FFD700;
+  color: #FFD700;
+  transform: translateY(-2px);
+}
+
+.style-btn.active {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #FFD700;
+  color: #FFD700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+/* ===== Footer ===== */
+.footer {
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .layout {
+    padding: 1.2rem 0.8rem;
+    gap: 1rem;
+  }
+
+  .dance-styles {
+    gap: 0.4rem;
+  }
+
+  .style-btn {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .toggle-btn {
+    padding: 0.65rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    flex-direction: row;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .controls {
+    align-items: flex-start;
+  }
+
+  .dance-styles {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
